@@ -15,7 +15,7 @@ after_success:
   - docker build -t fuat/multi-worker ./worker 
   
   # Log in to docker CLI
-  - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
   # Take those images and push the to docker hub
   - docker push fuat/multi-client
   - docker push fuat/multi-nginx
